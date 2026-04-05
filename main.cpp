@@ -1,16 +1,29 @@
 #include <iostream>
 #include <cmath>
-#include <stdio.h>
+#include <cstdio>
+#include <matplot/matplot.h>
+#include <set>
+
 using namespace std;
 
-float sine(float num) {
+double sine(double num) {
     return sin(num)*(numbers::pi/180);
 }
 
 int main() {
-    for (double i = 0; i < 10; i+=0.01) {
-        //cout << i << "\n";
-        cout << sine(2*numbers::pi*10*i) << "\n";
+
+    std::vector<double> temp;
+    using namespace matplot;
+    std::vector<double> x = linspace(0, 2 * pi, 700);
+    set<std::vector<double>> Y = {};
+    for (double i = 0; i <= 2*numbers::pi; i+=0.01) {
+        temp.push_back(sine(i));
     }
+    Y.insert(temp);
+    //xticks({0, pi, 2*pi});
+   // xticklabels({"0", "pi", "2*pi"});
+    plot(x,Y);
+
+    show();
     return 0;
 }
