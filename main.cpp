@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <matplot/matplot.h>
 #include <set>
+#include "fft.h"
 
 using namespace std;
 
@@ -25,5 +26,6 @@ int main() {
     plot(x,Y);
 
     show();
+    even_index(10, Y);
     return 0;
 }
